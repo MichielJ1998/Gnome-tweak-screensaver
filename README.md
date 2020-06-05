@@ -1,6 +1,7 @@
 # Gnome-tweak-screensaver
 A gnome extension which operates as a screensaver. I started making this screensaver during the corona quarantaine, and it turned out to be something I wanted to share with others. This is why I made this extension. It isn't perfect documentated, but if you have any questions, you can ask them. 
 
+<p align="center"><img src="Screenshot from 2020-06-06 01-01-57.png"></p>
 
 # Dependencies
 The extension makes use of conky (https://github.com/brndnmtthws/conky), todo.txt (https://gitlab.com/bartl/todo-txt-gnome-shell-extension), lua, imagemagick (to take the screenshot and blur it), unclutter and xdotool. 
