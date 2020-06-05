@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="my-caffeine-on-1-symbolic.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1030"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="14.75"
+     inkscape:cx="-11.288136"
+     inkscape:cy="8"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     id="path2"
+     style="fill:#cccccc;fill-opacity:1"
+     d="m 7.1933594,0 c -1.0982,1.38 -1.42735,1.5692187 -1.03125,2.4492188 C 6.5212094,3.2492185 7.4490219,3.15 6.9824219,5 7.7488219,4.1 8.3576594,3.4590625 7.7558594,2.5390625 7.1436594,1.5990625 6.8083594,1.53 7.1933594,0 Z m 5.1523436,2.7246094 c 0.0033,0.00434 0.0064,0.00938 0.0098,0.013672 0.0037,0.00159 0.0079,0.00437 0.01172,0.00586 -0.0013,-0.00408 -6.56e-4,-0.00764 -0.002,-0.011719 -0.0039,-0.00144 -0.01158,-0.00437 -0.01953,-0.00781 z m 0.638672,2.265625 c -9.43e-4,0.00377 -9.5e-4,0.00598 -0.002,0.00977 0.0019,-0.00225 0.0039,-0.00361 0.0059,-0.00586 -0.0011,-0.00173 -0.0028,-0.00215 -0.0039,-0.00391 z M 4,6 c -2.2091,0 -4,1.79 -4,4 0,2.21 1.7909,4 4,4 0.2425,0 0.4842563,-0.02031 0.7226562,-0.07031 C 5.4619563,15.479682 6.958,16 10,16 c 6,0 6,-2 6,-10 z m 0,2 h 0.00781 c 0.0116,1.6 0.052213,2.940234 0.1953125,3.990234 C 4.13573,11.990234 4.0679,12 4,12 2.8954,12 2,11.1 2,10 2,8.9 2.8954,8 4,8 Z" />
+</svg>

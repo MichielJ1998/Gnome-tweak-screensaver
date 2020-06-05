@@ -1,0 +1,48 @@
+--[[
+]]
+
+conky.config = {
+
+	--Various settings
+
+	background = true, 							-- forked to background
+	update_interval = 1000000,
+
+
+	--Placement
+
+	alignment = 'top_left',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+												-- middle_left,middle_middle,middle_right,none
+	--Arch Duoscreen
+	--gap_x = -1910,
+	gap_x = -1920,									-- pixels between right or left border
+	gap_y = -1080,									-- pixels between bottom or left border
+	minimum_height = 2160,						-- minimum height of window
+	minimum_width = 3840,						-- minimum height of window
+	maximum_width = 3840,						-- maximum height of window
+
+	
+	--Windows
+
+	own_window = true,							-- create your own window to draw
+	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
+	own_window_argb_visual = true,				-- use ARGB - composite manager required
+	own_window_colour = '#2e3847',				-- set colour if own_window_transparent no
+	own_window_hints ='undecorated,sticky,above,skip_pager',  -- if own_window true - just hints - own_window_type sets it skip_pager,skip_taskbar,
+	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_title = 'transparent_overlay',			-- set the name manually  - default conky "hostname"
+	own_window_type = 'normal',				-- if own_window true options are: normal/override/dock/desktop/panel
+
+
+	--Colours
+
+	default_color = '#cccccc',				-- default color and border color
+	color1 = '#d68800', -- color title
+	color3 = '#537ba6', -- color groups
+	color2 = '#d68800', -- color contexts
+
+    -- Lua
+	-- lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/getTodo_conky.lua'
+
+};
+conky.text = [[${image /dev/shm/blurred_scrnshot.jpg -p -1,-24 -f 100000}]];

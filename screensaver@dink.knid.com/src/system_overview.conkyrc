@@ -1,0 +1,169 @@
+--[[
+	for info see todo.conkyrc
+]]
+
+conky.config = {
+
+	--Various settings
+
+	background = true, 							-- forked to background
+	double_buffer = true,						-- Use the Xdbe extension? (eliminates flicker)
+	temperature_unit = 'celsius',				-- fahrenheit or celsius
+	update_interval = 1.5,						-- update interval
+	imlib_cache_size = 0,                       -- disable image cache to get a new spotify cover per song
+	times_in_seconds = true,
+
+	--Placement
+
+	alignment = 'top_left',						-- top_left,top_middle,top_right,bottom_left,bottom_middle,bottom_right,
+												-- middle_left,middle_middle,middle_right,none
+	--Arch Duoscreen
+	--gap_x = -1910,
+	gap_x = 15,									-- pixels between right or left border
+	gap_y = 27,									-- pixels between bottom or left border
+	-- minimum_height = 600,						-- minimum height of window
+	minimum_width = 325,						-- minimum height of window
+	maximum_width = 325,						-- maximum height of window
+
+	--Graphical
+
+	border_inner_margin = 10, 					-- margin between border and text
+	border_outer_margin = 5, 					-- margin between border and edge of window
+	border_width = 0, 							-- border width in pixels
+	default_bar_width = 80,					-- default is 0 - full width
+	default_bar_height = 10,					-- default is 6
+	default_gauge_height = 25,					-- default is 25
+	default_gauge_width =40,					-- default is 40
+	default_graph_height = 10,					-- default is 25
+	default_graph_width = 100,					-- default is 0 - full width
+	default_shade_color = '#000000',			-- default shading colour
+	default_outline_color = '#000000',			-- default outline colour
+	draw_borders = false,						-- draw borders around text
+	draw_graph_borders = true,					-- draw borders around graphs
+	draw_shades = false,						-- draw shades
+	draw_outline = false,						-- draw outline
+	stippled_borders = 0,						-- dashing the border
+
+
+	--Textual
+
+	extra_newline = false,						-- extra newline at the end - for asesome's wiboxes
+	format_human_readable = true,				-- KiB, MiB rather then number of bytes
+	font = 'GE Inspira:pixelsize=12',  				-- font for complete conky unless in code defined
+	max_text_width = 0,							-- 0 will make sure line does not get broken if width too smal
+	max_user_text = 16384,						-- max text in conky default 16384
+	override_utf8_locale = true,				-- force UTF8 requires xft
+	short_units = true,							-- shorten units from KiB to k
+	top_name_width = 21,						-- width for $top name value default 15
+	top_name_verbose = false,					-- If true, top name shows the full command line of  each  process - Default value is false.
+	uppercase = false,							-- uppercase or not
+	use_spacer = 'none',						-- adds spaces around certain objects to align - default none
+	use_xft = true,								-- xft font - anti-aliased font
+	xftalpha = 1,								-- alpha of the xft font - between 0-1
+
+	--Windows
+
+	own_window = true,							-- create your own window to draw
+	own_window_argb_value = 255,			    -- real transparency - composite manager required 0-255
+	own_window_argb_visual = true,				-- use ARGB - composite manager required
+	own_window_colour = '#2e3847',				-- set colour if own_window_transparent no
+	own_window_hints ='undecorated,sticky,skip_taskbar,skip_pager,above',  -- if own_window true - just hints - own_window_type sets it
+	own_window_transparent = false,				-- if own_window_argb_visual is true sets background opacity 0%
+	own_window_title = 'system_conky',			-- set the name manually  - default conky "hostname"
+	own_window_type = 'desktop',				-- if own_window true options are: normal/override/dock/desktop/panel
+
+
+	--Colours
+
+	default_color = '#cccccc',  				-- default color and border color
+	color1 = '#FF0000', -- not used, red
+	color2 = '#537ba6', -- subtitles
+	color3 = '#cccccc', -- not used, grey
+	color4 = '#D9BC83', -- not used very light orange
+	color5 = '#d68800', -- title color
+	color6 = '#cccccc',
+
+	--Signal Colours
+	color7 = '#1F7411',  						--green
+	color8 = '#FFA726',  						--orange
+	color9 = '#F1544B',  						--firebrick
+
+    --Lua
+    lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/network.lua',
+
+
+};
+
+conky.text = [[
+${color6}${voffset 4}${font GE Inspira:size=40}${alignc}${time %H}:${time %M} ${time %p}${font}${color}
+${color6}${voffset 4}${font GE Inspira:size=15}${alignc}${time %A} ${time %e} ${time %B}, ${time %Y}${font}${color}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}System${goto 120}${hr 1} ${font}${color}
+${color2}${font bold:pixelsize=13}${voffset 8}Hostname:${font}${color} ${alignr}${nodename}
+#${color2}${font bold:pixelsize=13}${voffset 2}Distro:${font}${color}${alignr}$sysname $kernel ${alignr}${execi 6000 lsb_release -a | grep 'Release'|awk {'print $2""$3""$4""$5'}}
+${color2}${font bold:pixelsize=13}${voffset 2}Kernel:${font}${color}${alignr}${exec uname} ${exec uname -r}
+#${color2}${font bold:pixelsize=13}${voffset 2}Nvidia:${font}${color}${alignr}${execp  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}
+${color2}${font bold:pixelsize=13}${voffset 2}Uptime:${font}${color} ${alignr}${format_time $uptime "\hh \mm \ss"}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}Battery${goto 120}${hr 1} ${font}${color}
+${color2}${font bold:pixelsize=13}${voffset 8}Laptop:${font}${color} ${alignr}${offset -10}${battery_percent BAT1}%${alignr}${battery_bar 10,69 BAT1}
+${color2}${font bold:pixelsize=13}${voffset 2}Status:${font}${color} ${alignr}${exec upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep "state" | awk {'print $2'}}
+${color2}${font bold:pixelsize=13}${voffset 2}Remaining time:${font}${color} ${alignr}${format_time ${battery_time BAT1} "\hh \mm"}
+${color2}${font bold:pixelsize=13}${voffset 2}Logitech mouse:${font}${color} ${alignr}${offset -10}${execi 720 upower -i /org/freedesktop/UPower/devices/mouse_hidpp_battery_0 | grep percentage | awk {'print $2'}}${alignr}${execbar 10,69 upower -i /org/freedesktop/UPower/devices/mouse_hidpp_battery_0 | grep percentage | awk {'print $2'}}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}Processors${goto 120}${hr 1} ${font}${color}
+${color2}${font bold:pixelsize=13}${voffset 8}CPU Temp:${font}${color} $alignr${execi 10 sensors | grep 'Core 0' | awk {'print $3'}}
+${color2}${font bold:pixelsize=13}${voffset 2}History Temp:${font}${color} ${alignr}${execgraph "sensors | grep 'Core 0' | awk {'print $3'} | cut -b2-5"}
+${color2}${font bold:pixelsize=13}${voffset 2}History:${font}${color} ${alignr}${cpugraph 10,100}
+${color2}${font bold:pixelsize=13}${voffset 2}CPU:${font}${color} ${alignr}${offset -10}${cpu cpu0}%${alignr}${cpubar cpu0 10,100}
+${color2}${offset 30}${font bold:pixelsize=13}${voffset 2}CPU Core 1:${font}${color} ${alignr}${offset -10}${cpu cpu1}%${alignr}${cpubar cpu1 10,69}
+${color2}${offset 30}${font bold:pixelsize=13}${voffset 2}CPU Core 2:${font}${color} ${alignr}${offset -10}${cpu cpu2}%${alignr}${cpubar cpu2 10,69}
+${color2}${offset 30}${font bold:pixelsize=13}${voffset 2}CPU Core 3:${font}${color} ${alignr}${offset -10}${cpu cpu3}%${alignr}${cpubar cpu3 10,69}
+${color2}${offset 30}${font bold:pixelsize=13}${voffset 2}CPU Core 4:${font}${color} ${alignr}${offset -10}${cpu cpu4}%${alignr}${cpubar cpu4 10,69}
+${color2}${font bold:pixelsize=13}${voffset 2}Top Processes${goto 239}cpu%${goto 294}mem%${font}${color}
+${voffset 4}     1  -  ${top name 1}${alignr}${goto 170} ${goto 238}${top cpu 1} ${goto 302}${top mem 1}
+     2  -  ${top name 2}${alignr} ${goto 238}${top cpu 2} ${goto 302}${top mem 2}
+     3  -  ${top name 3}${alignr} ${goto 238}${top cpu 3} ${goto 302}${top mem 3}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}Memory${goto 120}${hr 1} ${font}${color}
+${color2}${font bold:pixelsize=13}${voffset 8}Total RAM:${font}${color} $alignr${memmax}
+${color2}${font bold:pixelsize=13}${voffset 2}RAM:${font} ${color}${alignr}${offset -10}${memperc}%${alignr}${membar 10,69}
+${color2}${font bold:pixelsize=13}${voffset 2}Swap:${font}${color} ${alignr}${offset -10}${swapperc}%${alignr}${swapbar 10,69}
+${color2}${font bold:pixelsize=13}${voffset 2}Top Processes${goto 239}cpu%${goto 294}mem%${font}${color}
+${voffset 4}     1  -  ${top_mem name 1}${alignr}${goto 170} ${goto 238}${top_mem cpu 1} ${goto 302}${top_mem mem 1}
+     2  -  ${top_mem name 2}${alignr}${goto 170} ${goto 238}${top_mem cpu 2} ${goto 302}${top_mem mem 2}
+     3  -  ${top_mem name 3}${alignr}${goto 170} ${goto 238}${top_mem cpu 3} ${goto 302}${top_mem mem 3}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}Drives${goto 120}${hr 1} ${font}${color}
+${color2}${font bold:pixelsize=13}${voffset 8}SSD - root:${font}${color} ${alignr}${offset -10}${fs_used_perc /}%${alignr}${fs_bar 10,69 /}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}Size:${font}${color} ${alignr}${fs_used /} / ${fs_size /}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}I/O Read:${font}${color} ${alignr}${offset -10}${diskio_read /dev/sda3}${alignr}${diskiograph_read /dev/sda3 10,69}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}I/O Write:${font}${color} ${alignr}${offset -10}${diskio_write /dev/sda3}${alignr}${diskiograph_write /dev/sda3 10,69}
+
+${color2}${font bold:pixelsize=13}${voffset 8}HDD - home:${font}${color} ${alignr}${offset -10}${fs_used_perc /home/michiel}%${alignr}${fs_bar 10,69 /home/michiel}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}Size:${font}${color} ${alignr}${fs_used /home/michiel} / ${fs_size /home/michiel}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}I/O Read:${font}${color} ${alignr}${offset -10}${diskio_read /dev/sdb2}${alignr}${diskiograph_read /dev/sdb2 10,69}
+${offset 30}${color2}${font bold:pixelsize=13}${voffset 2}I/O Write:${font}${color} ${alignr}${offset -10}${diskio_write /dev/sdb2}${alignr}${diskiograph_write /dev/sdb2 10,69}
+
+#
+#
+${color5}${font bold:pixelsize=17}${voffset 2}Network${goto 120}${hr 1} ${font}${color}
+${lua_parse conky_getNetwork}
+
+#
+#
+#${color5}${font bold:pixelsize=17}${voffset 2}Nvidia${goto 120}${hr 1} ${font}${color}
+#${color2}${font bold:pixelsize=13}${voffset 8}Nvidia card:${font}${color}${alignr}${execi 6000  nvidia-smi --query-supported-clocks=gpu_name --format=csv,noheader}
+#${color2}${font bold:pixelsize=13}${voffset 2}GPU Temp:${font}${color} ${alignr}+${execi 60 nvidia-settings -q [gpu:0]/gpucoretemp -t}.0°C
+#${color2}${font bold:pixelsize=13}${voffset 2}Mem Used:${font}${color} ${alignr}${execi 60 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
+]];
