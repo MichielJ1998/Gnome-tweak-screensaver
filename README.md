@@ -6,6 +6,8 @@ A gnome extension which operates as a screensaver. I started making this screens
 # Dependencies
 The extension makes use of conky (https://github.com/brndnmtthws/conky), todo.txt (https://gitlab.com/bartl/todo-txt-gnome-shell-extension), lua, imagemagick (to take the screenshot and blur it), xautolock, unclutter and xdotool. 
 
+`sudo apt install conky lua5.3 imagemagick xautolock unclutter xdotool`
+
 # Installation
 Install this extension just like any other gnome extension. One additional thing must be changed in the source codes of the conkyrc files. Look in each conkyrc file (src/devices.conkyrc, src/system_overview.conkyrc and src/todo.conkyrc), and change the path from which the lua scripts must be loaded. (`lua_load = '...'`, replace the `...`)
 
