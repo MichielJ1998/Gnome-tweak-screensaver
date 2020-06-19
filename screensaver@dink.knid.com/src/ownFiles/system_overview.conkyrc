@@ -89,7 +89,7 @@ conky.config = {
 	color9 = '#F1544B',  						--firebrick
 
     --Lua
-    lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/network.lua',
+    lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/ownFiles/network.lua',
 
 
 };

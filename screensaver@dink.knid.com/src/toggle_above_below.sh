@@ -3,13 +3,11 @@
 # variables
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-sysOverview=$DIR/system_overview.conkyrc
-todo=$DIR/todo.conkyrc
-transparentView=$DIR/transparent_overlay.conkyrc
-distpy=$DIR/dist.py
+todo=$DIR/ownFiles/todo.conkyrc
+conkyFiles=$(ls -d $DIR/ownFiles/*.conkyrc)
+transparentView=$DIR/.transparent_overlay.conkyrc
 scrnshot=/dev/shm/scrnshot.jpg
 blurredScrnshot=/dev/shm/blurred_scrnshot.jpg
-devicesView=$DIR/devices.conkyrc
 
 
 
@@ -77,10 +75,11 @@ function to_foreground {
 	scrnshot & 
 	scrnshot_pid=$!
 
-	# replace desktop-type to dock-type in todo and systemoverview widgets
-	sed -u -i "s/own_window_type = 'desktop'/own_window_type = 'dock'/g" $sysOverview
-	sed -u -i "s/own_window_type = 'desktop'/own_window_type = 'dock'/g" $todo
-	sed -u -i "s/own_window_type = 'desktop'/own_window_type = 'dock'/g" $devicesView
+	for file in $conkyFiles
+	do 
+		sed -u -i "s/own_window_type = 'desktop'/own_window_type = 'dock'/g" "$file"
+	done
+
 	# change update interval of todo widget	
 	sed -u -i "s/update_interval = 10/update_interval = 7200/g" $todo
 	
@@ -112,10 +111,15 @@ function to_foreground {
 
 function restart_conky {
 	conky -q -c $transparentView
-	conky -q -c $sysOverview
-	sleep 0.2  # this sleep makes sure that both widgets appear almost at the same time
-	conky -q -c $todo
-	conky -q -c $devicesView
+	for file in $conkyFiles
+	do
+		conky -q -c $file
+	done
+
+	# conky -q -c $sysOverview
+	# sleep 0.2  # this sleep makes sure that both widgets appear almost at the same time
+	# conky -q -c $todo
+	# conky -q -c $devicesView
 
 }
 

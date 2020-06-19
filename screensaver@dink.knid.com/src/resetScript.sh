@@ -2,13 +2,11 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # variables
-sysOverview=$DIR/system_overview.conkyrc
 todo=$DIR/todo.conkyrc
-transparentView=$DIR/transparent_overlay.conkyrc
-distpy=$DIR/dist.py
+conkyFiles=$(ls -d $DIR/ownFiles/*.conkyrc)
+transparentView=$DIR/.transparent_overlay.conkyrc
 scrnshot=/dev/shm/scrnshot.jpg
 blurredScrnshot=/dev/shm/blurred_scrnshot.jpg
-devicesView=$DIR/devices.conkyrc
 
 # startStopContent needs one argument: CONT/STOP and a process keyword
 # All the processes related to the given process keyword are resumed.
@@ -31,13 +29,15 @@ function startStopContents {
 
 function restartConky {
 	# if needed reset the dock to desktop
-	sed -i "s/own_window_type = 'dock'/own_window_type = 'desktop'/g" $sysOverview
-	sed -i "s/own_window_type = 'dock'/own_window_type = 'desktop'/g" $todo
-	sed -i "s/own_window_type = 'dock'/own_window_type = 'desktop'/g" $devicesView
+	for file in $conkyFiles
+	do 
+		sed -u -i "s/own_window_type = 'dock'/own_window_type = 'desktop'/g" "$file"
+	done
 	sed -i "s/update_interval = 7200/update_interval = 10/g" $todo
-	conky -p 1 -q -c $sysOverview &
-	conky -p 1 -q -c $todo &
-	conky -p 1 -q -c $devicesView &
+	for file in $conkyFiles
+	do
+		conky -p 1 -q -c $file&
+	done
 }
 
 function resetDisabledMouses {

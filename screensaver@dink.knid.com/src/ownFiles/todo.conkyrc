@@ -122,7 +122,7 @@ conky.config = {
 	color2 = '#d68800', -- color contexts
 
     --Lua
-	lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/getTodo_conky.lua'
+	lua_load = '/home/michiel/.local/share/gnome-shell/extensions/screensaver@dink.knid.com/src/ownFiles/getTodo_conky.lua'
 
 };
 conky.text = [[
