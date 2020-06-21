@@ -29,10 +29,12 @@ const toggleKey = "toggle-key";
 
 
 function init() {
-
+	
 }
 
 function enable() {
+	log("Screensaver: Enabling extension.")
+	
 	this.lockStatus = false; // currently locked or not
 	this.caffeineStatus = 1; // 0 = 1min, 1 = 5min, 2 = off
 	this.prefCafStatus = this.caffeineStatus;
@@ -70,29 +72,22 @@ function enable() {
 }
 
 function disable() {
+	log("Screensaver: Disabling extension.")
+	this.lockedButton._removeKeyBinding(toggleKey);
 
-  removeButtons();
-}
-function addButtons() {
-  
-  
-  Main.panel.addToStatusArea("caffeineButton", this.caffeineButton, 1, "right");
-  updateXautolock();
-
-
+	for (let i = 0; i < this.buttons.length; i++) {
+		this.buttons[i].destroy();
+	}
+	this.buttons = [];
 }
 
-function removeButtons() {
-  this.lockedButton._removeKeyBinding(toggleKey);
-
-  for (let i = 0; i < this.buttons.length; i++) {
-    this.buttons[i].destroy();
-  }
-  this.buttons = [];
-}
 
 function toggleLock() {
+	
+	
 	if (this.lockStatus) {
+		log("Screensaver: Unlocking.")
+
 		this.lockedButton.setIcon(unlockedImage);
 		GLib.spawn_command_line_async("sh -c '"+dirPath+"/src/toggle_above_below.sh off'");
 		updateXautolock();
@@ -100,9 +95,13 @@ function toggleLock() {
 		let root_geo = 	GLib.spawn_command_line_sync("sh -c 'xwininfo -root | grep geometry' ");
 		let currWinGeo = GLib.spawn_command_line_sync("sh -c 'xwininfo -id $(xdotool getactivewindow) | grep geometry'");
 		if (root_geo.toString() != currWinGeo.toString()) {
+			log("Screensaver: Locking.")
+
 			this.lockedButton.setIcon(lockedImage, "orange");
 			GLib.spawn_command_line_async("sh -c '"+dirPath+"/src/toggle_above_below.sh on'");
 		} else {
+			log("Screensaver: Cannot lock due to fullscreen activity.")
+
 			GLib.spawn_command_line_async(`sh -c 'notify-send -u critical "Please disable Xautolock when using fullscreen" "Disable it by toggling the coffee icon until it is orange." '`)
 			return;
 		}
@@ -112,6 +111,8 @@ function toggleLock() {
 }
 
 function toggleCaffeine() {
+	log("Screensaver: toggling the caffeine button.")
+
 	if (this.caffeineStatus == 0) {
       this.caffeineButton.setIcon(caffeineOn3);
       this.caffeineStatus = 1;
@@ -126,6 +127,8 @@ function toggleCaffeine() {
 }
 
 function updateXautolock(){
+	log("Screensaver: Updating Xautolock.")
+
 	GLib.spawn_command_line_async("sh -c 'killall xautolock'");
 	if (this.caffeineStatus == 0) {
 		GLib.spawn_command_line_async(`sh -c "xautolock -locker 'xdotool key ctrl+Escape' -time 1 -corners 0-0- &"`);

@@ -1,8 +1,8 @@
 {
   "uuid": "screensaver@dink.knid.com",
-  "name": "Screensaver",
-  "description": "Create GNOME Shell extensions in seconds",
-  "url": "",
-  "version": 3,
-  "shell-version": ["3.32"]
+  "name": "Screensaver using conky",
+  "description": "A gnome extension which operates as a screensaver, using conky.",
+  "url": "https://github.com/MichielJ1998/Gnome-tweak-screensaver",
+  "version": 4,
+  "shell-version": ["3.36"]
 }

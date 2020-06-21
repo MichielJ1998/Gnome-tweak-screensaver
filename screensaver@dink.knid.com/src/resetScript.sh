@@ -2,7 +2,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # variables
-todo=$DIR/todo.conkyrc
+todo=$DIR/ownFiles/todo.conkyrc
 conkyFiles=$(ls -d $DIR/ownFiles/*.conkyrc)
 transparentView=$DIR/.transparent_overlay.conkyrc
 scrnshot=/dev/shm/scrnshot.jpg
